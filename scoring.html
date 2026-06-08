@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sistem Scoring Risiko Lansia — Sahabat Lansia">
+  <title>Scoring Risiko — Sahabat Lansia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <a href="index.html" class="navbar__brand">
+      <span class="navbar__logo">🤝</span> Sahabat Lansia
+    </a>
+    <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">Beranda</a></li>
+      <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+      <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
+      <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
+      <li><a href="notifications.html" class="navbar__link navbar__link--notification">
+        Notifikasi <span class="notification-badge">3</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ====== DASHBOARD LAYOUT ====== -->
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
+    <div class="sidebar__section-label">Utama</div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
+      <a href="scoring.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
+      <a href="profile.html" class="sidebar__link"><span class="sidebar__link-icon">👤</span> Profil Lansia</a>
+      <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
+      <a href="register.html" class="sidebar__link"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
+      <a href="report.html" class="sidebar__link"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
+      <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik & Statistik</a>
+      <a href="notifications.html" class="sidebar__link"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="main-content__header">
+      <h1>🎯 Sistem Scoring Risiko</h1>
+      <p>Hitung skor kerentanan lansia berdasarkan 5 dimensi statistik</p>
+    </div>
+
+    <!-- Stats Overview -->
+    <div class="stats-grid" style="margin-bottom: var(--space-xl);">
+      <div class="stat-card stat-card--danger">
+        <div class="stat-card__icon">🔴</div>
+        <div class="stat-card__value" id="stat-high" data-count="0">0</div>
+        <div class="stat-card__label">Risiko Tinggi</div>
+      </div>
+      <div class="stat-card stat-card--warning">
+        <div class="stat-card__icon">🟠</div>
+        <div class="stat-card__value" id="stat-medium" data-count="0">0</div>
+        <div class="stat-card__label">Risiko Menengah</div>
+      </div>
+      <div class="stat-card stat-card--success">
+        <div class="stat-card__icon">🟢</div>
+        <div class="stat-card__value" id="stat-low" data-count="0">0</div>
+        <div class="stat-card__label">Risiko Rendah</div>
+      </div>
+      <div class="stat-card stat-card--primary">
+        <div class="stat-card__icon">📊</div>
+        <div class="stat-card__value" id="stat-avg" data-count="0">0</div>
+        <div class="stat-card__label">Skor Rata-rata</div>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div style="display: grid; grid-template-columns: 1.2fr 1fr; gap: var(--space-xl); align-items: start;">
+
+      <!-- LEFT: Scoring Form -->
+      <div>
+        <form id="scoring-form">
+
+          <!-- A. Usia -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card__header">
+              <h3 class="card__title">👴 Dimensi 1: Usia</h3>
+              <span class="badge badge--primary">Maks. 25 poin</span>
+            </div>
+            <div class="card__body">
+              <div class="form-group">
+                <label class="form-label form-label--required" for="age-range">Rentang Usia</label>
+                <select class="form-select" id="age-range" name="ageRange" required>
+                  <option value="">— Pilih rentang usia —</option>
+                  <option value="65-69">65 – 69 tahun</option>
+                  <option value="70-74">70 – 74 tahun</option>
+                  <option value="75-79">75 – 79 tahun</option>
+                  <option value="80-84">80 – 84 tahun</option>
+                  <option value="85-89">85 – 89 tahun</option>
+                  <option value="90+">90+ tahun</option>
+                </select>
+                <span class="form-hint">Semakin tinggi usia, semakin besar skor kerentanan.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- B. Kondisi Kesehatan -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card__header">
+              <h3 class="card__title">🏥 Dimensi 2: Kondisi Kesehatan</h3>
+              <span class="badge badge--primary">Maks. 25 poin</span>
+            </div>
+            <div class="card__body">
+              <div class="form-group">
+                <label class="form-label form-label--required">Status Kesehatan</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="healthCondition" value="healthy" required>
+                    <span>🟢 Sehat</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="healthCondition" value="chronic">
+                    <span>🟠 Penyakit Kronis</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="healthCondition" value="disability">
+                    <span>🔴 Disabilitas</span>
+                  </label>
+                </div>
+                <span class="form-hint">Penyakit kronis: diabetes, hipertensi, jantung, dll. Disabilitas: stroke, lumpuh, dll.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- C. Pendapatan -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card__header">
+              <h3 class="card__title">💰 Dimensi 3: Pendapatan</h3>
+              <span class="badge badge--primary">Maks. 20 poin</span>
+            </div>
+            <div class="card__body">
+              <div class="form-group">
+                <label class="form-label form-label--required">Kategori Pendapatan</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="incomeCategory" value="pension" required>
+                    <span>🟢 Pensiunan (&gt;1 juta/bulan)</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="incomeCategory" value="low">
+                    <span>🟠 Pendapatan Rendah (&lt;1 juta/bulan)</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="incomeCategory" value="none">
+                    <span>🔴 Tanpa Pendapatan</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- D. Dukungan Keluarga -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card__header">
+              <h3 class="card__title">👨‍👩‍👧 Dimensi 4: Dukungan Keluarga</h3>
+              <span class="badge badge--primary">Maks. 20 poin</span>
+            </div>
+            <div class="card__body">
+              <div class="form-group">
+                <label class="form-label form-label--required">Status Tinggal</label>
+                <div class="form-radio-group">
+                  <label class="form-radio">
+                    <input type="radio" name="familySupport" value="family" required>
+                    <span>🟢 Tinggal dengan Keluarga</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="familySupport" value="caregiver">
+                    <span>🟠 Ada Pengasuh</span>
+                  </label>
+                  <label class="form-radio">
+                    <input type="radio" name="familySupport" value="alone">
+                    <span>🔴 Tinggal Sendiri</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- E. Aksesibilitas -->
+          <div class="card" style="margin-bottom: var(--space-lg);">
+            <div class="card__header">
+              <h3 class="card__title">🚌 Dimensi 5: Aksesibilitas</h3>
+              <span class="badge badge--primary">Maks. 10 poin</span>
+            </div>
+            <div class="card__body">
+              <div class="form-group">
+                <label class="form-label">Hambatan Aksesibilitas</label>
+                <div class="form-check-group">
+                  <label class="form-check">
+                    <input type="checkbox" name="distanceFar" id="distance-far">
+                    <span>📍 Jarak ke fasilitas kesehatan &gt;5 km</span>
+                  </label>
+                  <label class="form-check">
+                    <input type="checkbox" name="noTransport" id="no-transport">
+                    <span>🚫 Tidak ada akses transportasi</span>
+                  </label>
+                </div>
+                <span class="form-hint">Centang semua yang berlaku. Kedua faktor meningkatkan skor risiko.</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Submit Button -->
+          <button type="submit" class="btn btn--primary btn--lg btn--block" id="calculate-btn">
+            🎯 Hitung Skor Risiko
+          </button>
+        </form>
+      </div>
+
+      <!-- RIGHT: Result Panel -->
+      <div style="position: sticky; top: 100px;">
+        <div class="card" id="result-panel">
+          <div class="card__header">
+            <h3 class="card__title">📊 Hasil Scoring</h3>
+          </div>
+          <div class="card__body" style="text-align: center;">
+
+            <!-- Empty State -->
+            <div id="empty-result" class="empty-state">
+              <div class="empty-state__icon">🎯</div>
+              <h3 class="empty-state__title">Belum Ada Perhitungan</h3>
+              <p class="empty-state__text">Isi formulir di samping untuk menghitung skor risiko lansia. Sistem akan menganalisis 5 dimensi kerentanan secara otomatis.</p>
+            </div>
+
+            <!-- Gauge (hidden initially) -->
+            <div id="score-result" style="display: none;">
+              <div id="score-gauge" style="display: flex; justify-content: center; margin-bottom: var(--space-lg);"></div>
+              
+              <h2 style="font-family: var(--font-heading); margin-bottom: var(--space-xs);" id="score-text">Skor Risiko: 0/100</h2>
+              <div id="risk-badge-container" style="margin-bottom: var(--space-lg);"></div>
+
+              <div class="gold-divider gold-divider--center gold-divider--sm"></div>
+
+              <!-- Score Breakdown -->
+              <div style="text-align: left; margin-top: var(--space-lg);">
+                <h4 style="margin-bottom: var(--space-md); font-family: var(--font-heading);">📋 Rincian Skor per Dimensi</h4>
+                <div class="score-breakdown" id="score-breakdown">
+                  <div class="score-factor">
+                    <div class="score-factor__label">👴 Usia</div>
+                    <div class="score-factor__bar"><div class="score-factor__fill" id="fill-age" style="width: 0%; background: var(--primary);"></div></div>
+                    <div class="score-factor__value" id="val-age">0/25</div>
+                  </div>
+                  <div class="score-factor">
+                    <div class="score-factor__label">🏥 Kesehatan</div>
+                    <div class="score-factor__bar"><div class="score-factor__fill" id="fill-health" style="width: 0%; background: var(--risk-high);"></div></div>
+                    <div class="score-factor__value" id="val-health">0/25</div>
+                  </div>
+                  <div class="score-factor">
+                    <div class="score-factor__label">💰 Pendapatan</div>
+                    <div class="score-factor__bar"><div class="score-factor__fill" id="fill-income" style="width: 0%; background: var(--risk-medium);"></div></div>
+                    <div class="score-factor__value" id="val-income">0/20</div>
+                  </div>
+                  <div class="score-factor">
+                    <div class="score-factor__label">👨‍👩‍👧 Keluarga</div>
+                    <div class="score-factor__bar"><div class="score-factor__fill" id="fill-family" style="width: 0%; background: var(--warm-brown);"></div></div>
+                    <div class="score-factor__value" id="val-family">0/20</div>
+                  </div>
+                  <div class="score-factor">
+                    <div class="score-factor__label">🚌 Aksesibilitas</div>
+                    <div class="score-factor__bar"><div class="score-factor__fill" id="fill-access" style="width: 0%; background: var(--gold);"></div></div>
+                    <div class="score-factor__value" id="val-access">0/10</div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="gold-divider gold-divider--center gold-divider--sm"></div>
+
+              <!-- Recommendation -->
+              <div style="text-align: left; margin-top: var(--space-lg);">
+                <h4 style="margin-bottom: var(--space-md); font-family: var(--font-heading);">💡 Rekomendasi Tindakan</h4>
+                <div id="recommendation-text" style="background: var(--cream); border-radius: var(--radius-md); padding: var(--space-md); line-height: 1.7;"></div>
+              </div>
+
+              <!-- Actions -->
+              <div style="margin-top: var(--space-xl); display: flex; gap: var(--space-md);">
+                <a href="register.html" class="btn btn--primary" style="flex:1;">📝 Daftarkan Lansia</a>
+                <button class="btn btn--outline" id="reset-btn" style="flex:1;" type="button">🔄 Hitung Ulang</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Methodology Explanation -->
+    <div class="card" style="margin-top: var(--space-2xl);">
+      <div class="card__header">
+        <h3 class="card__title">📖 Metodologi Scoring Risiko</h3>
+      </div>
+      <div class="card__body">
+        <p style="line-height: 1.8; margin-bottom: var(--space-md);">
+          Sistem scoring risiko <strong>Sahabat Lansia</strong> menggunakan pendekatan <em>multi-dimensional vulnerability assessment</em> yang mengevaluasi kerentanan lansia dari 5 dimensi kunci. Setiap dimensi memiliki bobot skor yang mencerminkan tingkat pengaruhnya terhadap kerentanan keseluruhan.
+        </p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: var(--space-lg); margin-top: var(--space-lg);">
+          <div style="background: var(--cream); padding: var(--space-lg); border-radius: var(--radius-md); border-left: 4px solid var(--primary);">
+            <h4 style="margin-bottom: var(--space-sm);">👴 Usia (maks. 25 poin)</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Usia lanjut berkorelasi positif dengan kerentanan fisik dan kognitif. Lansia berusia 90+ mendapat skor maksimum pada dimensi ini.</p>
+          </div>
+          <div style="background: var(--cream); padding: var(--space-lg); border-radius: var(--radius-md); border-left: 4px solid var(--risk-high);">
+            <h4 style="margin-bottom: var(--space-sm);">🏥 Kesehatan (maks. 25 poin)</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Kondisi kesehatan dinilai dari status penyakit kronis dan disabilitas yang mempengaruhi kemandirian sehari-hari.</p>
+          </div>
+          <div style="background: var(--cream); padding: var(--space-lg); border-radius: var(--radius-md); border-left: 4px solid var(--risk-medium);">
+            <h4 style="margin-bottom: var(--space-sm);">💰 Pendapatan (maks. 20 poin)</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Kemampuan finansial menentukan akses terhadap kebutuhan dasar, obat-obatan, dan layanan kesehatan.</p>
+          </div>
+          <div style="background: var(--cream); padding: var(--space-lg); border-radius: var(--radius-md); border-left: 4px solid var(--warm-brown);">
+            <h4 style="margin-bottom: var(--space-sm);">👨‍👩‍👧 Keluarga (maks. 20 poin)</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Dukungan keluarga atau pengasuh menjadi faktor protektif utama bagi kesejahteraan lansia.</p>
+          </div>
+          <div style="background: var(--cream); padding: var(--space-lg); border-radius: var(--radius-md); border-left: 4px solid var(--gold);">
+            <h4 style="margin-bottom: var(--space-sm);">🚌 Aksesibilitas (maks. 10 poin)</h4>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">Jarak ke fasilitas kesehatan dan ketersediaan transportasi mempengaruhi kemampuan mendapatkan layanan.</p>
+          </div>
+        </div>
+
+        <div style="background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; padding: var(--space-lg); border-radius: var(--radius-md); margin-top: var(--space-xl); text-align: center;">
+          <h4 style="margin-bottom: var(--space-sm);">📊 Klasifikasi Risiko</h4>
+          <div style="display: flex; justify-content: center; gap: var(--space-2xl); flex-wrap: wrap; margin-top: var(--space-md);">
+            <div>
+              <div style="font-size: 2rem; font-weight: 700;">0 – 34</div>
+              <div style="opacity: 0.9;">🟢 Risiko Rendah</div>
+            </div>
+            <div>
+              <div style="font-size: 2rem; font-weight: 700;">35 – 64</div>
+              <div style="opacity: 0.9;">🟠 Risiko Menengah</div>
+            </div>
+            <div>
+              <div style="font-size: 2rem; font-weight: 700;">65 – 100</div>
+              <div style="opacity: 0.9;">🔴 Risiko Tinggi</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>🤝 Sahabat Lansia</h3>
+        <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih tepat sasaran.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navigasi</h4>
+        <a href="index.html">Beranda</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="register.html">Daftarkan Lansia</a>
+        <a href="volunteer.html">Jadi Relawan</a>
+      </div>
+      <div class="footer__links">
+        <h4>Layanan</h4>
+        <a href="scoring.html">Scoring Risiko</a>
+        <a href="analytics.html">Analitik</a>
+        <a href="report.html">Laporan</a>
+        <a href="notifications.html">Notifikasi</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Kontak</h4>
+        <p>📧 info@sahabatlansia.id</p>
+        <p>📞 (031) 555-0123</p>
+        <p>📍 Surabaya, Jawa Timur</p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+    <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/scoring.js"></script>
+</body>
+</html>

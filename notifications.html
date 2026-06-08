@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Notifikasi sistem — Sahabat Lansia">
+  <title>Notifikasi — Sahabat Lansia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <a href="index.html" class="navbar__brand">
+      <span class="navbar__logo">🤝</span> Sahabat Lansia
+    </a>
+    <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">Beranda</a></li>
+      <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+      <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
+      <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
+      <li><a href="notifications.html" class="navbar__link navbar__link--notification">
+        Notifikasi <span class="notification-badge">3</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ===== DASHBOARD LAYOUT ===== -->
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
+    <div class="sidebar__section-label">Utama</div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
+      <a href="scoring.html" class="sidebar__link"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
+      <a href="profile.html" class="sidebar__link"><span class="sidebar__link-icon">👤</span> Profil Lansia</a>
+      <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
+      <a href="register.html" class="sidebar__link"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
+      <a href="report.html" class="sidebar__link"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
+      <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik & Statistik</a>
+      <a href="notifications.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="main-content__header" style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:var(--space-md);">
+      <div>
+        <h1>🔔 Notifikasi</h1>
+        <p>Peringatan, informasi, dan pembaruan sistem</p>
+      </div>
+      <button class="btn btn--gold" id="btn-mark-all" onclick="markAllRead()">
+        ✅ Tandai Semua Dibaca
+      </button>
+    </div>
+
+    <!-- ===== SUMMARY CARDS ===== -->
+    <div class="stats-grid" style="grid-template-columns:repeat(4, 1fr); margin-bottom:var(--space-xl);">
+      <div class="stat-card stat-card--primary">
+        <div class="stat-card__icon">📬</div>
+        <div class="stat-card__value" id="notif-total">8</div>
+        <div class="stat-card__label">Total Notifikasi</div>
+      </div>
+      <div class="stat-card stat-card--danger">
+        <div class="stat-card__icon">🔴</div>
+        <div class="stat-card__value" id="notif-unread">3</div>
+        <div class="stat-card__label">Belum Dibaca</div>
+      </div>
+      <div class="stat-card stat-card--warning">
+        <div class="stat-card__icon">⚠️</div>
+        <div class="stat-card__value" id="notif-danger">3</div>
+        <div class="stat-card__label">Peringatan Penting</div>
+      </div>
+      <div class="stat-card stat-card--success">
+        <div class="stat-card__icon">✅</div>
+        <div class="stat-card__value" id="notif-success">1</div>
+        <div class="stat-card__label">Sukses</div>
+      </div>
+    </div>
+
+    <!-- ===== FILTER BAR ===== -->
+    <div class="filter-bar" style="margin-bottom:var(--space-lg);">
+      <span style="font-weight:600; color:var(--text-primary); margin-right:var(--space-sm);">Filter:</span>
+      <button class="filter-chip filter-chip--active" data-filter="all" onclick="filterNotifications('all')">📬 Semua</button>
+      <button class="filter-chip" data-filter="danger" onclick="filterNotifications('danger')">🔴 Peringatan</button>
+      <button class="filter-chip" data-filter="warning" onclick="filterNotifications('warning')">🟠 Perhatian</button>
+      <button class="filter-chip" data-filter="info" onclick="filterNotifications('info')">🔵 Info</button>
+      <button class="filter-chip" data-filter="success" onclick="filterNotifications('success')">🟢 Sukses</button>
+    </div>
+
+    <!-- ===== NOTIFICATION LIST ===== -->
+    <div class="card" style="margin-bottom:var(--space-xl);">
+      <div class="card__header">
+        <h3 class="card__title">📋 Daftar Notifikasi</h3>
+        <span class="badge badge--primary" id="filter-count-badge">8 notifikasi</span>
+      </div>
+      <div class="card__body" style="padding:0;">
+        <div class="notification-list" id="notification-list">
+          <!-- Rendered by JS -->
+        </div>
+        <div class="empty-state" id="empty-state" style="display:none; text-align:center; padding:var(--space-2xl);">
+          <div class="empty-state__icon" style="font-size:3rem;">🔍</div>
+          <h3 class="empty-state__title">Tidak ada notifikasi</h3>
+          <p class="empty-state__text">Tidak ada notifikasi untuk filter yang dipilih.</p>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>🤝 Sahabat Lansia</h3>
+        <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih tepat sasaran.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navigasi</h4>
+        <a href="index.html">Beranda</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="register.html">Daftarkan Lansia</a>
+        <a href="volunteer.html">Jadi Relawan</a>
+      </div>
+      <div class="footer__links">
+        <h4>Layanan</h4>
+        <a href="scoring.html">Scoring Risiko</a>
+        <a href="analytics.html">Analitik</a>
+        <a href="report.html">Laporan</a>
+        <a href="notifications.html">Notifikasi</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Kontak</h4>
+        <p>📧 info@sahabatlansia.id</p>
+        <p>📞 (031) 555-0123</p>
+        <p>📍 Surabaya, Jawa Timur</p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+    <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script>
+/* ============================================
+   Notifications Page Logic
+   ============================================ */
+
+let currentFilter = 'all';
+
+document.addEventListener('DOMContentLoaded', function () {
+  updateSummaryCounts();
+  renderNotifications('all');
+});
+
+function updateSummaryCounts() {
+  const total = notificationsData.length;
+  const unread = notificationsData.filter(n => !n.read).length;
+  const dangerCount = notificationsData.filter(n => n.type === 'danger').length;
+  const successCount = notificationsData.filter(n => n.type === 'success').length;
+
+  const totalEl = document.getElementById('notif-total');
+  const unreadEl = document.getElementById('notif-unread');
+  const dangerEl = document.getElementById('notif-danger');
+  const successEl = document.getElementById('notif-success');
+
+  if (totalEl) totalEl.textContent = total;
+  if (unreadEl) unreadEl.textContent = unread;
+  if (dangerEl) dangerEl.textContent = dangerCount;
+  if (successEl) successEl.textContent = successCount;
+}
+
+function getTypeIcon(type) {
+  const icons = {
+    danger: '🚨',
+    warning: '⚠️',
+    info: 'ℹ️',
+    success: '✅'
+  };
+  return icons[type] || 'ℹ️';
+}
+
+function getTypeColor(type) {
+  const colors = {
+    danger: '#C62828',
+    warning: '#E67E22',
+    info: '#6A0D0D',
+    success: '#2E7D32'
+  };
+  return colors[type] || '#6A0D0D';
+}
+
+function getTypeBgColor(type) {
+  const colors = {
+    danger: 'rgba(198,40,40,0.1)',
+    warning: 'rgba(230,126,34,0.1)',
+    info: 'rgba(106,13,13,0.1)',
+    success: 'rgba(46,125,50,0.1)'
+  };
+  return colors[type] || 'rgba(106,13,13,0.1)';
+}
+
+function getTypeBadgeClass(type) {
+  const classes = {
+    danger: 'badge--danger',
+    warning: 'badge--warning',
+    info: 'badge--primary',
+    success: 'badge--success'
+  };
+  return classes[type] || 'badge--primary';
+}
+
+function getTypeLabel(type) {
+  const labels = {
+    danger: 'Peringatan',
+    warning: 'Perhatian',
+    info: 'Informasi',
+    success: 'Sukses'
+  };
+  return labels[type] || 'Info';
+}
+
+function renderNotifications(filter) {
+  currentFilter = filter;
+  const listEl = document.getElementById('notification-list');
+  const emptyEl = document.getElementById('empty-state');
+  const countBadge = document.getElementById('filter-count-badge');
+  if (!listEl) return;
+
+  let filtered = notificationsData;
+  if (filter !== 'all') {
+    filtered = notificationsData.filter(n => n.type === filter);
+  }
+
+  // Update filter count badge
+  if (countBadge) countBadge.textContent = filtered.length + ' notifikasi';
+
+  if (filtered.length === 0) {
+    listEl.style.display = 'none';
+    if (emptyEl) emptyEl.style.display = 'block';
+    return;
+  }
+
+  listEl.style.display = 'block';
+  if (emptyEl) emptyEl.style.display = 'none';
+
+  listEl.innerHTML = filtered.map(n => {
+    const unreadClass = !n.read ? 'notification-item--unread' : '';
+    const typeIcon = getTypeIcon(n.type);
+    const typeColor = getTypeColor(n.type);
+    const typeBg = getTypeBgColor(n.type);
+    const badgeClass = getTypeBadgeClass(n.type);
+    const typeLabel = getTypeLabel(n.type);
+    const elderlyLink = n.elderlyId ? `<a href="profile.html?id=${n.elderlyId}" style="font-size:0.8rem; color:var(--primary); text-decoration:underline; margin-top:4px; display:inline-block;">Lihat profil →</a>` : '';
+
+    return `
+      <div class="notification-item ${unreadClass}" style="display:flex; align-items:flex-start; gap:var(--space-md); padding:var(--space-md) var(--space-lg); border-bottom:1px solid var(--beige); ${!n.read ? 'background:rgba(212,163,115,0.08);' : ''}">
+        <div style="width:48px; height:48px; min-width:48px; display:flex; align-items:center; justify-content:center; background:${typeBg}; border-radius:50%; font-size:1.4rem; border:2px solid ${typeColor}20;">
+          ${typeIcon}
+        </div>
+        <div style="flex:1;">
+          <div style="display:flex; justify-content:space-between; align-items:flex-start; gap:var(--space-sm); flex-wrap:wrap;">
+            <div>
+              <div style="display:flex; align-items:center; gap:var(--space-sm); margin-bottom:4px; flex-wrap:wrap;">
+                <h4 style="font-size:0.95rem; color:var(--text-primary); font-weight:${!n.read ? '700' : '600'};">${n.title}</h4>
+                <span class="badge ${badgeClass}" style="font-size:0.65rem;">${typeLabel}</span>
+                ${!n.read ? '<span class="badge badge--danger" style="font-size:0.6rem;">BARU</span>' : ''}
+              </div>
+              <p style="font-size:0.85rem; color:var(--text-secondary); line-height:1.5; margin-bottom:4px;">${n.message}</p>
+              ${elderlyLink}
+            </div>
+            <div style="text-align:right; min-width:fit-content;">
+              <span style="font-size:0.75rem; color:var(--text-secondary); white-space:nowrap;">🕐 ${n.time}</span>
+              <br>
+              <span style="font-size:0.7rem; color:var(--text-secondary);">${formatDate(n.date)}</span>
+            </div>
+          </div>
+        </div>
+        <button style="background:none; border:none; cursor:pointer; font-size:1rem; padding:4px; opacity:0.5;" title="Tandai dibaca" onclick="markOneRead(${n.id})">
+          ${!n.read ? '📩' : '📭'}
+        </button>
+      </div>
+    `;
+  }).join('');
+}
+
+function filterNotifications(filter) {
+  // Update chips
+  document.querySelectorAll('.filter-chip').forEach(chip => {
+    chip.classList.toggle('filter-chip--active', chip.dataset.filter === filter);
+  });
+
+  renderNotifications(filter);
+}
+
+function markAllRead() {
+  notificationsData.forEach(n => n.read = true);
+  updateSummaryCounts();
+  renderNotifications(currentFilter);
+  showToast('Semua notifikasi telah ditandai dibaca', 'success');
+
+  // Update navbar badge
+  const badges = document.querySelectorAll('.notification-badge');
+  badges.forEach(b => { b.textContent = '0'; b.style.display = 'none'; });
+}
+
+function markOneRead(id) {
+  const notif = notificationsData.find(n => n.id === id);
+  if (notif) {
+    notif.read = !notif.read;
+    updateSummaryCounts();
+    renderNotifications(currentFilter);
+    showToast(notif.read ? 'Notifikasi ditandai dibaca' : 'Notifikasi ditandai belum dibaca', 'success');
+
+    // Update badge
+    const unread = notificationsData.filter(n => !n.read).length;
+    const badges = document.querySelectorAll('.notification-badge');
+    badges.forEach(b => {
+      b.textContent = unread;
+      b.style.display = unread === 0 ? 'none' : '';
+    });
+  }
+}
+</script>
+</body>
+</html>

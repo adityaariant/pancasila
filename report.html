@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Laporan Kunjungan Lansia — Sahabat Lansia">
+  <title>Laporan Kunjungan — Sahabat Lansia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <a href="index.html" class="navbar__brand">
+      <span class="navbar__logo">🤝</span> Sahabat Lansia
+    </a>
+    <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">Beranda</a></li>
+      <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+      <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
+      <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
+      <li><a href="notifications.html" class="navbar__link navbar__link--notification">
+        Notifikasi <span class="notification-badge">3</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ====== DASHBOARD LAYOUT ====== -->
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
+    <div class="sidebar__section-label">Utama</div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
+      <a href="scoring.html" class="sidebar__link"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
+      <a href="profile.html" class="sidebar__link"><span class="sidebar__link-icon">👤</span> Profil Lansia</a>
+      <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
+      <a href="register.html" class="sidebar__link"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
+      <a href="report.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
+      <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik & Statistik</a>
+      <a href="notifications.html" class="sidebar__link"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="main-content__header">
+      <h1>📋 Laporan Kunjungan</h1>
+      <p>Dokumentasikan hasil kunjungan ke lansia untuk monitoring kondisi dan kebutuhan</p>
+    </div>
+
+    <!-- Stats Bar -->
+    <div class="stats-grid" style="margin-bottom: var(--space-xl);">
+      <div class="stat-card stat-card--primary">
+        <div class="stat-card__icon">📋</div>
+        <div class="stat-card__value" data-count="6">6</div>
+        <div class="stat-card__label">Total Laporan</div>
+      </div>
+      <div class="stat-card stat-card--danger">
+        <div class="stat-card__icon">🔴</div>
+        <div class="stat-card__value" id="stat-critical" data-count="0">0</div>
+        <div class="stat-card__label">Kondisi Kritis</div>
+      </div>
+      <div class="stat-card stat-card--warning">
+        <div class="stat-card__icon">🟠</div>
+        <div class="stat-card__value" id="stat-concerning" data-count="0">0</div>
+        <div class="stat-card__label">Perlu Perhatian</div>
+      </div>
+      <div class="stat-card stat-card--success">
+        <div class="stat-card__icon">🟢</div>
+        <div class="stat-card__value" id="stat-stable" data-count="0">0</div>
+        <div class="stat-card__label">Stabil</div>
+      </div>
+    </div>
+
+    <!-- Two-column layout -->
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-xl); align-items: start;">
+
+      <!-- LEFT: Report Form -->
+      <div>
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__title">📝 Formulir Laporan Baru</h3>
+            <span class="badge badge--gold">Baru</span>
+          </div>
+          <div class="card__body">
+            <form id="report-form">
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label form-label--required" for="rpt-elderly">Pilih Lansia</label>
+                  <select class="form-select" id="rpt-elderly" name="elderlyId" required>
+                    <option value="">— Pilih lansia —</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label class="form-label form-label--required" for="rpt-date">Tanggal Kunjungan</label>
+                  <input type="date" class="form-input" id="rpt-date" name="date" required>
+                </div>
+              </div>
+
+              <!-- Selected Elderly Info -->
+              <div id="elderly-info-card" style="display: none; background: var(--cream); border-radius: var(--radius-md); padding: var(--space-md); margin-bottom: var(--space-lg); border-left: 4px solid var(--primary);">
+                <div style="display: flex; align-items: center; gap: var(--space-md);">
+                  <div class="avatar avatar--lg" id="info-avatar">👴</div>
+                  <div>
+                    <h4 id="info-name" style="margin-bottom: 2px;">—</h4>
+                    <p id="info-meta" style="color: var(--text-secondary); font-size: 0.85rem; margin: 0;">—</p>
+                    <div id="info-badge" style="margin-top: var(--space-xs);"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="rpt-health">Update Kondisi Kesehatan</label>
+                <textarea class="form-textarea" id="rpt-health" name="healthUpdate" rows="3" placeholder="Deskripsikan kondisi kesehatan saat ini, tekanan darah, gula darah, dll." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="rpt-house">Kondisi Rumah</label>
+                <textarea class="form-textarea" id="rpt-house" name="houseCondition" rows="3" placeholder="Deskripsikan kebersihan, keamanan, dan kelayakan tempat tinggal..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="rpt-emotional">Kesejahteraan Emosional</label>
+                <textarea class="form-textarea" id="rpt-emotional" name="emotionalWellbeing" rows="3" placeholder="Bagaimana kondisi emosional dan psikologis lansia..." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="rpt-assistance">Bantuan yang Dibutuhkan</label>
+                <textarea class="form-textarea" id="rpt-assistance" name="assistanceNeeded" rows="3" placeholder="Obat, makanan, transportasi, perbaikan rumah, dll." required></textarea>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label form-label--required" for="rpt-rating">Rating Keseluruhan</label>
+                <select class="form-select" id="rpt-rating" name="overallRating" required>
+                  <option value="">— Pilih rating —</option>
+                  <option value="stable">🟢 Stabil — Kondisi baik dan terkontrol</option>
+                  <option value="concerning">🟠 Perlu Perhatian — Ada masalah yang perlu ditangani</option>
+                  <option value="critical">🔴 Kritis — Butuh tindakan segera</option>
+                </select>
+              </div>
+
+              <!-- Photo Upload -->
+              <div class="form-group">
+                <label class="form-label">Foto Dokumentasi</label>
+                <div class="photo-upload" id="photo-upload-area">
+                  <div class="photo-upload__icon">📷</div>
+                  <div class="photo-upload__text">Klik atau seret foto ke sini</div>
+                  <div class="photo-upload__hint">Format: JPG, PNG. Maks 5 MB per file.</div>
+                  <input type="file" id="photo-input" accept="image/*" multiple style="display: none;">
+                </div>
+                <div id="photo-preview" style="display: flex; gap: var(--space-sm); flex-wrap: wrap; margin-top: var(--space-sm);"></div>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg btn--block">
+                📤 Kirim Laporan Kunjungan
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Previous Reports -->
+      <div>
+        <div class="card">
+          <div class="card__header">
+            <h3 class="card__title">📜 Riwayat Laporan</h3>
+            <span class="badge badge--primary" id="report-count">6 Laporan</span>
+          </div>
+          <div class="card__body" style="padding: 0;">
+            <div id="reports-timeline" class="timeline" style="padding: var(--space-lg);"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>🤝 Sahabat Lansia</h3>
+        <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih tepat sasaran.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navigasi</h4>
+        <a href="index.html">Beranda</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="register.html">Daftarkan Lansia</a>
+        <a href="volunteer.html">Jadi Relawan</a>
+      </div>
+      <div class="footer__links">
+        <h4>Layanan</h4>
+        <a href="scoring.html">Scoring Risiko</a>
+        <a href="analytics.html">Analitik</a>
+        <a href="report.html">Laporan</a>
+        <a href="notifications.html">Notifikasi</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Kontak</h4>
+        <p>📧 info@sahabatlansia.id</p>
+        <p>📞 (031) 555-0123</p>
+        <p>📍 Surabaya, Jawa Timur</p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+    <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/report.js"></script>
+</body>
+</html>

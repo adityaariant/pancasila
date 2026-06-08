@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pendaftaran Lansia — Sahabat Lansia">
+  <title>Pendaftaran Lansia — Sahabat Lansia</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+
+<!-- ====== NAVBAR ====== -->
+<nav class="navbar">
+  <div class="navbar__container">
+    <a href="index.html" class="navbar__brand">
+      <span class="navbar__logo">🤝</span> Sahabat Lansia
+    </a>
+    <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
+    <ul class="navbar__menu">
+      <li><a href="index.html" class="navbar__link">Beranda</a></li>
+      <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+      <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
+      <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
+      <li><a href="notifications.html" class="navbar__link navbar__link--notification">
+        Notifikasi <span class="notification-badge">3</span>
+      </a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ====== DASHBOARD LAYOUT ====== -->
+<div class="dashboard-layout">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
+    <div class="sidebar__section-label">Utama</div>
+    <nav class="sidebar__nav">
+      <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
+      <a href="scoring.html" class="sidebar__link"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
+      <a href="profile.html" class="sidebar__link"><span class="sidebar__link-icon">👤</span> Profil Lansia</a>
+      <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
+      <a href="register.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
+      <a href="report.html" class="sidebar__link"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
+      <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik & Statistik</a>
+      <a href="notifications.html" class="sidebar__link"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
+    </nav>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="main-content">
+    <div class="main-content__header">
+      <h1>📝 Pendaftaran Lansia</h1>
+      <p>Daftarkan lansia yang membutuhkan bantuan ke dalam sistem pemetaan prioritas</p>
+    </div>
+
+    <!-- Progress Indicator -->
+    <div style="display: flex; gap: var(--space-sm); margin-bottom: var(--space-xl); flex-wrap: wrap;">
+      <span class="badge badge--primary" id="step-1-badge">1️⃣ Data Pribadi</span>
+      <span class="badge badge--gold" id="step-2-badge">2️⃣ Kesehatan</span>
+      <span class="badge badge--warning" id="step-3-badge">3️⃣ Ekonomi</span>
+      <span class="badge badge--success" id="step-4-badge">4️⃣ Keluarga</span>
+      <span class="badge badge--danger" id="step-5-badge">5️⃣ Aksesibilitas</span>
+    </div>
+
+    <form id="register-form">
+
+      <!-- Section 1: Data Pribadi -->
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">👤 Bagian 1 — Data Pribadi</h3>
+          <span class="badge badge--primary">Wajib</span>
+        </div>
+        <div class="card__body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-nama">Nama Lengkap</label>
+              <input type="text" class="form-input" id="reg-nama" name="nama" placeholder="Contoh: Ibu Siti Aminah" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-usia">Usia (tahun)</label>
+              <input type="number" class="form-input" id="reg-usia" name="usia" min="60" max="120" placeholder="Contoh: 75" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-gender">Jenis Kelamin</label>
+              <select class="form-select" id="reg-gender" name="gender" required>
+                <option value="">— Pilih —</option>
+                <option value="Laki-laki">Laki-laki</option>
+                <option value="Perempuan">Perempuan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-phone">No. Telepon</label>
+              <input type="tel" class="form-input" id="reg-phone" name="phone" placeholder="Contoh: 081234567890" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label form-label--required" for="reg-alamat">Alamat Lengkap</label>
+            <textarea class="form-textarea" id="reg-alamat" name="alamat" rows="2" placeholder="Jl. ..., RT/RW, Kelurahan" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label form-label--required" for="reg-district">Kelurahan / Kecamatan</label>
+            <select class="form-select" id="reg-district" name="district" required>
+              <option value="">— Pilih kelurahan —</option>
+            </select>
+            <span class="form-hint">Pilih kecamatan domisili di Surabaya.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 2: Kondisi Kesehatan -->
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">🏥 Bagian 2 — Kondisi Kesehatan</h3>
+          <span class="badge badge--gold">Skor Risiko</span>
+        </div>
+        <div class="card__body">
+          <div class="form-group">
+            <label class="form-label form-label--required" for="reg-health">Status Kesehatan</label>
+            <select class="form-select" id="reg-health" name="healthCondition" required>
+              <option value="">— Pilih status —</option>
+              <option value="healthy">🟢 Sehat</option>
+              <option value="chronic">🟠 Penyakit Kronis (diabetes, hipertensi, jantung, dll.)</option>
+              <option value="disability">🔴 Disabilitas (stroke, lumpuh, demensia, dll.)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="reg-health-detail">Keterangan Penyakit</label>
+            <textarea class="form-textarea" id="reg-health-detail" name="healthDetail" rows="3" placeholder="Jelaskan kondisi kesehatan secara detail (opsional)..."></textarea>
+            <span class="form-hint">Sebutkan penyakit yang diderita, obat rutin, riwayat rawat inap, dll.</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 3: Ekonomi -->
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">💰 Bagian 3 — Kondisi Ekonomi</h3>
+          <span class="badge badge--warning">Skor Risiko</span>
+        </div>
+        <div class="card__body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-income">Pendapatan per Bulan</label>
+              <select class="form-select" id="reg-income" name="incomeCategory" required>
+                <option value="">— Pilih kategori —</option>
+                <option value="pension">🟢 Pensiunan (&gt;Rp 1.000.000/bulan)</option>
+                <option value="low">🟠 Pendapatan Rendah (&lt;Rp 1.000.000/bulan)</option>
+                <option value="none">🔴 Tanpa Pendapatan</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-income-source">Sumber Pendapatan</label>
+              <input type="text" class="form-input" id="reg-income-source" name="incomeSource" placeholder="Contoh: Pensiun PNS, jualan kecil-kecilan">
+              <span class="form-hint">Kosongkan jika tidak ada sumber pendapatan.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 4: Dukungan Keluarga -->
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">👨‍👩‍👧 Bagian 4 — Dukungan Keluarga</h3>
+          <span class="badge badge--success">Skor Risiko</span>
+        </div>
+        <div class="card__body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-family">Status Tinggal</label>
+              <select class="form-select" id="reg-family" name="familySupport" required>
+                <option value="">— Pilih status —</option>
+                <option value="alone">🔴 Tinggal Sendiri</option>
+                <option value="caregiver">🟠 Tinggal dengan Pengasuh</option>
+                <option value="family">🟢 Tinggal dengan Keluarga</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="reg-family-contact">Kontak Keluarga / Pengasuh</label>
+              <input type="text" class="form-input" id="reg-family-contact" name="familyContact" placeholder="Nama — No. HP">
+              <span class="form-hint">Kontak darurat anggota keluarga atau pengasuh.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Section 5: Aksesibilitas -->
+      <div class="card" style="margin-bottom: var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">🚌 Bagian 5 — Aksesibilitas</h3>
+          <span class="badge badge--danger">Skor Risiko</span>
+        </div>
+        <div class="card__body">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label form-label--required" for="reg-distance">Jarak ke Fasilitas Kesehatan (km)</label>
+              <input type="number" class="form-input" id="reg-distance" name="accessibilityDistance" min="0" max="50" step="0.5" placeholder="Contoh: 5" required>
+              <span class="form-hint">Jarak ke puskesmas atau rumah sakit terdekat dalam kilometer.</span>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Akses Transportasi</label>
+              <div class="form-check-group" style="margin-top: var(--space-sm);">
+                <label class="form-check">
+                  <input type="checkbox" name="transportAccess" id="reg-transport">
+                  <span>✅ Memiliki akses transportasi umum/pribadi</span>
+                </label>
+              </div>
+              <span class="form-hint">Centang jika lansia memiliki akses ke transportasi.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div style="display: flex; gap: var(--space-md); flex-wrap: wrap;">
+        <button type="button" class="btn btn--gold btn--lg" id="calc-score-btn" style="flex: 1; min-width: 200px;">
+          🎯 Hitung Skor Risiko
+        </button>
+        <button type="submit" class="btn btn--primary btn--lg" id="submit-btn" style="flex: 1; min-width: 200px;">
+          📝 Daftarkan Lansia
+        </button>
+      </div>
+    </form>
+
+    <!-- Result Section (hidden initially) -->
+    <div id="register-result" class="card" style="margin-top: var(--space-xl); display: none;">
+      <div class="card__header">
+        <h3 class="card__title">📊 Hasil Perhitungan Skor Risiko</h3>
+      </div>
+      <div class="card__body">
+        <div style="display: grid; grid-template-columns: auto 1fr; gap: var(--space-xl); align-items: center;">
+          <!-- Gauge -->
+          <div id="reg-gauge" style="display: flex; justify-content: center;"></div>
+          <!-- Summary -->
+          <div>
+            <h2 id="reg-score-text" style="font-family: var(--font-heading); margin-bottom: var(--space-sm);">Skor Risiko: 0/100</h2>
+            <div id="reg-risk-badge" style="margin-bottom: var(--space-md);"></div>
+            <div class="gold-divider gold-divider--sm"></div>
+            <div id="reg-summary" style="margin-top: var(--space-md); line-height: 1.8; color: var(--text-secondary);"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <h3>🤝 Sahabat Lansia</h3>
+        <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih tepat sasaran.</p>
+      </div>
+      <div class="footer__links">
+        <h4>Navigasi</h4>
+        <a href="index.html">Beranda</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="register.html">Daftarkan Lansia</a>
+        <a href="volunteer.html">Jadi Relawan</a>
+      </div>
+      <div class="footer__links">
+        <h4>Layanan</h4>
+        <a href="scoring.html">Scoring Risiko</a>
+        <a href="analytics.html">Analitik</a>
+        <a href="report.html">Laporan</a>
+        <a href="notifications.html">Notifikasi</a>
+      </div>
+      <div class="footer__contact">
+        <h4>Kontak</h4>
+        <p>📧 info@sahabatlansia.id</p>
+        <p>📞 (031) 555-0123</p>
+        <p>📍 Surabaya, Jawa Timur</p>
+      </div>
+    </div>
+    <div class="gold-divider"></div>
+    <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+  </div>
+</footer>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+<script src="js/register.js"></script>
+</body>
+</html>
