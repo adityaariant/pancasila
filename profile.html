@@ -1,229 +1,260 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Profil lengkap lansia — Sahabat Lansia">
   <title>Profil Lansia — Sahabat Lansia</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
   <link rel="stylesheet" href="css/dashboard.css">
 </head>
+
 <body>
 
-<!-- ===== NAVBAR ===== -->
-<nav class="navbar">
-  <div class="navbar__container">
-    <a href="index.html" class="navbar__brand">
-      <span class="navbar__logo">🤝</span> Sahabat Lansia
-    </a>
-    <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
-    <ul class="navbar__menu">
-      <li><a href="index.html" class="navbar__link">Beranda</a></li>
-      <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
-      <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
-      <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
-      <li><a href="notifications.html" class="navbar__link navbar__link--notification">
-        Notifikasi <span class="notification-badge">3</span>
-      </a></li>
-    </ul>
-  </div>
-</nav>
-
-<!-- ===== DASHBOARD LAYOUT ===== -->
-<div class="dashboard-layout">
-
-  <!-- Sidebar -->
-  <aside class="sidebar">
-    <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
-    <div class="sidebar__section-label">Utama</div>
-    <nav class="sidebar__nav">
-      <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
-      <a href="scoring.html" class="sidebar__link"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
-      <a href="profile.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">👤</span> Profil Lansia</a>
-      <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
-      <a href="register.html" class="sidebar__link"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
-      <a href="report.html" class="sidebar__link"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
-      <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik & Statistik</a>
-      <a href="notifications.html" class="sidebar__link"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
-    </nav>
-  </aside>
-
-  <!-- Main Content -->
-  <main class="main-content">
-    <div class="main-content__header">
-      <h1>👤 Profil Lansia</h1>
-      <p>Detail informasi dan riwayat lansia</p>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar">
+    <div class="navbar__container">
+      <a href="index.html" class="navbar__brand">
+        <span class="navbar__logo">🤝</span> Sahabat Lansia
+      </a>
+      <button class="navbar__toggle" aria-label="Menu" aria-expanded="false">☰</button>
+      <ul class="navbar__menu">
+        <li><a href="index.html" class="navbar__link">Beranda</a></li>
+        <li><a href="dashboard.html" class="navbar__link">Dashboard</a></li>
+        <li><a href="register.html" class="navbar__link">Daftarkan Lansia</a></li>
+        <li><a href="volunteer.html" class="navbar__link">Relawan</a></li>
+        <li><a href="notifications.html" class="navbar__link navbar__link--notification">
+            Notifikasi <span class="notification-badge">3</span>
+          </a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!-- ===== PROFILE SECTION (Two Columns) ===== -->
-    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:var(--space-xl); margin-bottom:var(--space-xl);" id="profile-container">
+  <!-- ===== DASHBOARD LAYOUT ===== -->
+  <div class="dashboard-layout">
 
-      <!-- LEFT: Profile Card -->
-      <div class="profile-card" style="align-self: start;">
-        <div class="profile-card__banner" style="background:linear-gradient(135deg, #6A0D0D 0%, #8B1E1E 50%, #D4A373 100%); height:120px; border-radius:var(--radius-lg) var(--radius-lg) 0 0; position:relative;"></div>
-        <div class="profile-card__photo" id="profile-photo" style="font-size:4rem; width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:var(--cream); border-radius:50%; border:4px solid white; margin:-50px auto 12px; position:relative; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
-          👵
-        </div>
-        <div class="profile-card__info" style="text-align:center; padding:0 var(--space-lg) var(--space-md);">
-          <h2 class="profile-card__name" id="profile-name" style="font-family:'Playfair Display',serif; color:var(--primary); margin-bottom:var(--space-xs);">Ibu Siti Aminah</h2>
-          <p class="profile-card__meta" id="profile-meta" style="color:var(--text-secondary); margin-bottom:var(--space-sm);">79 tahun • Perempuan • Jambangan</p>
-          <div id="profile-risk-badge-container">
-            <span class="risk-badge risk-badge--high">
-              <span class="risk-badge__dot"></span> 🔴 Risiko Tinggi
-            </span>
-          </div>
-        </div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar__header"><span>📊</span> Menu Dashboard</div>
+      <div class="sidebar__section-label">Utama</div>
+      <nav class="sidebar__nav">
+        <a href="dashboard.html" class="sidebar__link"><span class="sidebar__link-icon">📊</span> Dashboard Utama</a>
+        <a href="scoring.html" class="sidebar__link"><span class="sidebar__link-icon">🎯</span> Scoring Risiko</a>
+        <a href="profile.html" class="sidebar__link sidebar__link--active"><span class="sidebar__link-icon">👤</span>
+          Profil Lansia</a>
+        <a href="volunteer.html" class="sidebar__link"><span class="sidebar__link-icon">🤝</span> Manajemen Relawan</a>
+        <a href="register.html" class="sidebar__link"><span class="sidebar__link-icon">📝</span> Pendaftaran</a>
+        <a href="report.html" class="sidebar__link"><span class="sidebar__link-icon">📋</span> Laporan Kunjungan</a>
+        <a href="analytics.html" class="sidebar__link"><span class="sidebar__link-icon">📈</span> Analitik &
+          Statistik</a>
+        <a href="notifications.html" class="sidebar__link"><span class="sidebar__link-icon">🔔</span> Notifikasi</a>
+      </nav>
+    </aside>
 
-        <div class="gold-divider gold-divider--sm gold-divider--center" style="margin:var(--space-md) var(--space-lg);"></div>
-
-        <div class="profile-card__details" style="padding:0 var(--space-lg) var(--space-md); display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:var(--space-md);">
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">🏥 Kesehatan</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-health">Diabetes, keterbatasan mobilitas</strong>
-          </div>
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">💰 Pendapatan</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-income">Rp500.000/bulan</strong>
-          </div>
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">👪 Keluarga</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-family">Tinggal sendiri</strong>
-          </div>
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">📍 Alamat</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-address">Jl. Kebonsari No. 12</strong>
-          </div>
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">🤝 Relawan</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-volunteer">Budi Santoso</strong>
-          </div>
-          <div class="profile-card__detail">
-            <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">📅 Terakhir Dikunjungi</span>
-            <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-last-visit">20 Mei 2026</strong>
-          </div>
-        </div>
-
-        <div class="profile-card__actions" style="padding:var(--space-md) var(--space-lg) var(--space-lg); display:flex; gap:var(--space-sm); flex-wrap:wrap;">
-          <button class="btn btn--primary btn--sm" id="btn-assign" onclick="showToast('Fitur assign relawan akan segera hadir', 'success')">🤝 Assign Relawan</button>
-          <button class="btn btn--gold btn--sm" id="btn-schedule" onclick="showToast('Jadwal kunjungan berhasil dibuat', 'success')">📅 Jadwalkan Kunjungan</button>
-          <button class="btn btn--secondary btn--sm" id="btn-assist" onclick="showToast('Form bantuan telah dikirim', 'success')">🎁 Berikan Bantuan</button>
-        </div>
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="main-content__header">
+        <h1>👤 Profil Lansia</h1>
+        <p>Detail informasi dan riwayat lansia</p>
       </div>
 
-      <!-- RIGHT: Risk Score + Visit Timeline -->
-      <div style="display:flex; flex-direction:column; gap:var(--space-xl);">
+      <!-- ===== PROFILE SECTION (Two Columns) ===== -->
+      <div
+        style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:var(--space-xl); margin-bottom:var(--space-xl); align-items: start;"
+        id="profile-container">
 
-        <!-- A. Risk Score Card -->
-        <div class="card">
-          <div class="card__header">
-            <h3 class="card__title">🎯 Skor Risiko</h3>
-            <span class="badge badge--danger" id="profile-score-badge">Skor: 87</span>
+        <!-- LEFT: Profile Card -->
+        <div class="profile-card" style="position: sticky; top: 100px; z-index: 10;">
+          <div class="profile-card__banner"
+            style="background:linear-gradient(135deg, #6A0D0D 0%, #8B1E1E 50%, #D4A373 100%); height:120px; border-radius:var(--radius-lg) var(--radius-lg) 0 0; position:relative;">
           </div>
-          <div class="card__body" style="text-align:center;">
-            <div id="profile-gauge" style="display:flex; justify-content:center; margin-bottom:var(--space-md);"></div>
-            <div class="gold-divider gold-divider--sm gold-divider--center" style="margin:var(--space-md) 0;"></div>
-            <div class="score-breakdown" id="profile-breakdown">
-              <!-- Populated by JS -->
+          <div class="profile-card__photo" id="profile-photo"
+            style="font-size:4rem; width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:var(--cream); border-radius:50%; border:4px solid white; margin:-50px auto 12px; position:relative; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+            👵
+          </div>
+          <div class="profile-card__info" style="text-align:center; padding:0 var(--space-lg) var(--space-md);">
+            <h2 class="profile-card__name" id="profile-name"
+              style="font-family:'Playfair Display',serif; color:var(--primary); margin-bottom:var(--space-xs);">Ibu
+              Siti Aminah</h2>
+            <p class="profile-card__meta" id="profile-meta"
+              style="color:var(--text-secondary); margin-bottom:var(--space-sm);">79 tahun • Perempuan • Jambangan</p>
+            <div id="profile-risk-badge-container">
+              <span class="risk-badge risk-badge--high">
+                <span class="risk-badge__dot"></span> 🔴 Risiko Tinggi
+              </span>
             </div>
           </div>
-        </div>
 
-        <!-- B. Visit History Timeline -->
-        <div class="card">
-          <div class="card__header">
-            <h3 class="card__title">📋 Riwayat Kunjungan</h3>
-            <span class="badge badge--gold" id="profile-visits-badge">4 Kunjungan</span>
-          </div>
-          <div class="card__body">
-            <div class="timeline" id="profile-timeline">
-              <!-- Populated by JS -->
+          <div class="gold-divider gold-divider--sm gold-divider--center"
+            style="margin:var(--space-md) var(--space-lg);"></div>
+
+          <div class="profile-card__details"
+            style="padding:0 var(--space-lg) var(--space-md); display:grid; grid-template-columns:repeat(auto-fit, minmax(130px, 1fr)); gap:var(--space-md); word-wrap: break-word;">
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">🏥
+                Kesehatan</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-health">Diabetes, keterbatasan
+                mobilitas</strong>
+            </div>
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">💰
+                Pendapatan</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-income">Rp500.000/bulan</strong>
+            </div>
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">👪
+                Keluarga</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-family">Tinggal sendiri</strong>
+            </div>
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">📍
+                Alamat</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-address">Jl. Kebonsari No.
+                12</strong>
+            </div>
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">🤝
+                Relawan</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-volunteer">Budi Santoso</strong>
+            </div>
+            <div class="profile-card__detail">
+              <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">📅 Terakhir
+                Dikunjungi</span>
+              <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-last-visit">20 Mei 2026</strong>
             </div>
           </div>
+
+          <div class="profile-card__actions"
+            style="padding:var(--space-md) var(--space-lg) var(--space-lg); display:flex; gap:var(--space-sm); flex-wrap:wrap;">
+            <button class="btn btn--primary btn--sm" id="btn-assign"
+              onclick="showToast('Fitur assign relawan akan segera hadir', 'success')">🤝 Assign Relawan</button>
+            <button class="btn btn--gold btn--sm" id="btn-schedule"
+              onclick="showToast('Jadwal kunjungan berhasil dibuat', 'success')">📅 Jadwalkan Kunjungan</button>
+            <button class="btn btn--secondary btn--sm" id="btn-assist"
+              onclick="showToast('Form bantuan telah dikirim', 'success')">🎁 Berikan Bantuan</button>
+          </div>
         </div>
 
-      </div>
-    </div>
+        <!-- RIGHT: Risk Score + Visit Timeline -->
+        <div style="display:flex; flex-direction:column; gap:var(--space-xl);">
 
-    <!-- ===== NOTES CARD ===== -->
-    <div class="card" style="margin-bottom:var(--space-xl);">
-      <div class="card__header">
-        <h3 class="card__title">📝 Catatan</h3>
-      </div>
-      <div class="card__body" id="profile-notes">
-        <!-- Populated by JS -->
-      </div>
-    </div>
+          <!-- A. Risk Score Card -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">🎯 Skor Risiko</h3>
+              <span class="badge badge--danger" id="profile-score-badge">Skor: 87</span>
+            </div>
+            <div class="card__body" style="text-align:center;">
+              <div id="profile-gauge" style="display:flex; justify-content:center; margin-bottom:var(--space-md);">
+              </div>
+              <div class="gold-divider gold-divider--sm gold-divider--center" style="margin:var(--space-md) 0;"></div>
+              <div class="score-breakdown" id="profile-breakdown">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
 
-    <!-- ===== LANSIA LAINNYA ===== -->
-    <div class="section__header" style="margin-bottom:var(--space-lg);">
-      <h2 class="section__title">👥 Lansia Lainnya</h2>
-      <p class="section__subtitle">Profil lansia lain yang terdaftar dalam sistem</p>
-    </div>
+          <!-- B. Visit History Timeline -->
+          <div class="card">
+            <div class="card__header">
+              <h3 class="card__title">📋 Riwayat Kunjungan</h3>
+              <span class="badge badge--gold" id="profile-visits-badge">4 Kunjungan</span>
+            </div>
+            <div class="card__body">
+              <div class="timeline" id="profile-timeline">
+                <!-- Populated by JS -->
+              </div>
+            </div>
+          </div>
 
-    <div class="elderly-list" id="other-elderly-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:12px; margin-bottom:var(--space-xl);">
-      <!-- Rendered by JS -->
-    </div>
+        </div>
+      </div>
 
-    <div id="view-more-container" style="text-align:center; margin-bottom:var(--space-2xl);">
-      <!-- View More Button -->
-    </div>
+      <!-- ===== NOTES CARD ===== -->
+      <div class="card" style="margin-bottom:var(--space-xl);">
+        <div class="card__header">
+          <h3 class="card__title">📝 Catatan</h3>
+        </div>
+        <div class="card__body" id="profile-notes">
+          <!-- Populated by JS -->
+        </div>
+      </div>
 
-  </main>
-</div>
+      <!-- ===== LANSIA LAINNYA ===== -->
+      <div class="section__header" style="margin-bottom:var(--space-lg);">
+        <h2 class="section__title">👥 Lansia Lainnya</h2>
+        <p class="section__subtitle">Profil lansia lain yang terdaftar dalam sistem</p>
+      </div>
 
-<!-- ===== FOOTER ===== -->
-<footer class="footer">
-  <div class="container">
-    <div class="footer__grid">
-      <div class="footer__brand">
-        <h3>🤝 Sahabat Lansia</h3>
-        <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih tepat sasaran.</p>
+      <div class="elderly-list" id="other-elderly-list"
+        style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:12px; margin-bottom:var(--space-xl);">
+        <!-- Rendered by JS -->
       </div>
-      <div class="footer__links">
-        <h4>Navigasi</h4>
-        <a href="index.html">Beranda</a>
-        <a href="dashboard.html">Dashboard</a>
-        <a href="register.html">Daftarkan Lansia</a>
-        <a href="volunteer.html">Jadi Relawan</a>
+
+      <div id="view-more-container" style="text-align:center; margin-bottom:var(--space-2xl);">
+        <!-- View More Button -->
       </div>
-      <div class="footer__links">
-        <h4>Layanan</h4>
-        <a href="scoring.html">Scoring Risiko</a>
-        <a href="analytics.html">Analitik</a>
-        <a href="report.html">Laporan</a>
-        <a href="notifications.html">Notifikasi</a>
-      </div>
-      <div class="footer__contact">
-        <h4>Kontak</h4>
-        <p>📧 info@sahabatlansia.id</p>
-        <p>📞 (031) 555-0123</p>
-        <p>📍 Surabaya, Jawa Timur</p>
-      </div>
-    </div>
-    <div class="gold-divider"></div>
-    <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+
+    </main>
   </div>
-</footer>
 
-<script src="js/data.js"></script>
-<script src="js/app.js"></script>
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // 1. Parse ID from query params, default to 1 (Ibu Siti Aminah)
-  const params = new URLSearchParams(window.location.search);
-  let elderlyId = parseInt(params.get('id'), 10);
-  if (isNaN(elderlyId)) {
-    elderlyId = 1;
-  }
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <h3>🤝 Sahabat Lansia</h3>
+          <p>Sistem pemetaan prioritas bantuan lansia berbasis statistika untuk mewujudkan kepedulian sosial yang lebih
+            tepat sasaran.</p>
+        </div>
+        <div class="footer__links">
+          <h4>Navigasi</h4>
+          <a href="index.html">Beranda</a>
+          <a href="dashboard.html">Dashboard</a>
+          <a href="register.html">Daftarkan Lansia</a>
+          <a href="volunteer.html">Jadi Relawan</a>
+        </div>
+        <div class="footer__links">
+          <h4>Layanan</h4>
+          <a href="scoring.html">Scoring Risiko</a>
+          <a href="analytics.html">Analitik</a>
+          <a href="report.html">Laporan</a>
+          <a href="notifications.html">Notifikasi</a>
+        </div>
+        <div class="footer__contact">
+          <h4>Kontak</h4>
+          <p>📧 info@sahabatlansia.id</p>
+          <p>📞 (031) 555-0123</p>
+          <p>📍 Surabaya, Jawa Timur</p>
+        </div>
+      </div>
+      <div class="gold-divider"></div>
+      <p class="footer__copyright">© 2026 Sahabat Lansia — Sistem Pemetaan Prioritas Bantuan Lansia</p>
+    </div>
+  </footer>
 
-  // Get data
-  const e = getElderlyById(elderlyId);
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      // 1. Parse ID from query params, default to 1 (Ibu Siti Aminah)
+      const params = new URLSearchParams(window.location.search);
+      let elderlyId = parseInt(params.get('id'), 10);
+      if (isNaN(elderlyId)) {
+        elderlyId = 1;
+      }
 
-  if (!e) {
-    // Show empty/not found state
-    document.getElementById('profile-container').innerHTML = `
+      // Get data
+      const e = getElderlyById(elderlyId);
+
+      if (!e) {
+        // Show empty/not found state
+        document.getElementById('profile-container').innerHTML = `
       <div class="card" style="grid-column: 1 / -1; padding: var(--space-2xl); text-align: center;">
         <div style="font-size: 4rem; margin-bottom: var(--space-md);">🔍</div>
         <h2 style="font-family:'Playfair Display',serif; color:var(--primary); margin-bottom: var(--space-sm);">Data Lansia Tidak Ditemukan</h2>
@@ -231,136 +262,136 @@ document.addEventListener('DOMContentLoaded', function() {
         <a href="dashboard.html" class="btn btn--primary">Kembali ke Dashboard</a>
       </div>
     `;
-    document.getElementById('profile-notes').innerHTML = `<p style="text-align:center; color:var(--text-muted);">Tidak ada catatan.</p>`;
-    return;
-  }
+        document.getElementById('profile-notes').innerHTML = `<p style="text-align:center; color:var(--text-muted);">Tidak ada catatan.</p>`;
+        return;
+      }
 
-  // Update Left Card info
-  document.getElementById('profile-photo').textContent = e.photo || "👵";
-  document.getElementById('profile-name').textContent = e.name;
-  document.getElementById('profile-meta').textContent = `${e.age} tahun • ${e.gender} • Kec. ${e.district}`;
-  
-  // Risk Badge
-  const badgeClass = e.riskCategory;
-  const badgeLabel = getRiskLabel(e.riskCategory);
-  const badgeEmoji = getRiskEmoji(e.riskCategory);
-  document.getElementById('profile-risk-badge-container').innerHTML = `
+      // Update Left Card info
+      document.getElementById('profile-photo').textContent = e.photo || "👵";
+      document.getElementById('profile-name').textContent = e.name;
+      document.getElementById('profile-meta').textContent = `${e.age} tahun • ${e.gender} • Kec. ${e.district}`;
+
+      // Risk Badge
+      const badgeClass = e.riskCategory;
+      const badgeLabel = getRiskLabel(e.riskCategory);
+      const badgeEmoji = getRiskEmoji(e.riskCategory);
+      document.getElementById('profile-risk-badge-container').innerHTML = `
     <span class="risk-badge risk-badge--${badgeClass}">
       <span class="risk-badge__dot"></span> ${badgeEmoji} ${badgeLabel}
     </span>
   `;
 
-  // Details
-  document.getElementById('detail-health').textContent = e.health;
-  document.getElementById('detail-income').textContent = e.income > 0 ? formatCurrency(e.income) + '/bulan' : 'Tidak ada pendapatan';
-  document.getElementById('detail-family').textContent = e.livingStatus || (e.familySupport === 'alone' ? 'Tinggal sendiri' : e.familySupport === 'caregiver' ? 'Dengan pengasuh' : 'Tinggal dengan keluarga');
-  document.getElementById('detail-address').textContent = e.address;
-  document.getElementById('detail-volunteer').textContent = e.volunteer || 'Belum ditugaskan';
-  
-  const days = daysSince(e.lastVisit);
-  document.getElementById('detail-last-visit').textContent = e.lastVisit ? `${formatDate(e.lastVisit)} (${days} hari lalu)` : 'Belum pernah';
+      // Details
+      document.getElementById('detail-health').textContent = e.health;
+      document.getElementById('detail-income').textContent = e.income > 0 ? formatCurrency(e.income) + '/bulan' : 'Tidak ada pendapatan';
+      document.getElementById('detail-family').textContent = e.livingStatus || (e.familySupport === 'alone' ? 'Tinggal sendiri' : e.familySupport === 'caregiver' ? 'Dengan pengasuh' : 'Tinggal dengan keluarga');
+      document.getElementById('detail-address').textContent = e.address;
+      document.getElementById('detail-volunteer').textContent = e.volunteer || 'Belum ditugaskan';
 
-  // Action Buttons customized
-  document.getElementById('btn-assign').setAttribute('onclick', `showToast('Berhasil menugaskan relawan untuk ${e.name}', 'success')`);
-  document.getElementById('btn-schedule').setAttribute('onclick', `showToast('Jadwal kunjungan ke ${e.name} berhasil dibuat', 'success')`);
-  document.getElementById('btn-assist').setAttribute('onclick', `showToast('Program bantuan untuk ${e.name} berhasil diajukan', 'success')`);
+      const days = daysSince(e.lastVisit);
+      document.getElementById('detail-last-visit').textContent = e.lastVisit ? `${formatDate(e.lastVisit)} (${days} hari lalu)` : 'Belum pernah';
 
-  // Update Right Card Info
-  // Score badge
-  const scoreBadge = document.getElementById('profile-score-badge');
-  scoreBadge.textContent = `Skor: ${e.riskScore}`;
-  scoreBadge.className = `badge badge--${badgeClass === 'high' ? 'danger' : badgeClass === 'medium' ? 'warning' : 'success'}`;
+      // Action Buttons customized
+      document.getElementById('btn-assign').setAttribute('onclick', `showToast('Berhasil menugaskan relawan untuk ${e.name}', 'success')`);
+      document.getElementById('btn-schedule').setAttribute('onclick', `showToast('Jadwal kunjungan ke ${e.name} berhasil dibuat', 'success')`);
+      document.getElementById('btn-assist').setAttribute('onclick', `showToast('Program bantuan untuk ${e.name} berhasil diajukan', 'success')`);
 
-  // Render Gauge
-  renderGauge('profile-gauge', e.riskScore);
+      // Update Right Card Info
+      // Score badge
+      const scoreBadge = document.getElementById('profile-score-badge');
+      scoreBadge.textContent = `Skor: ${e.riskScore}`;
+      scoreBadge.className = `badge badge--${badgeClass === 'high' ? 'danger' : badgeClass === 'medium' ? 'warning' : 'success'}`;
 
-  // Calculate breakdown contribution
-  const dataForScore = {
-    age: e.age,
-    healthCondition: e.healthCondition,
-    incomeCategory: e.incomeCategory,
-    familySupport: e.familySupport,
-    accessibilityDistance: e.accessibilityDistance,
-    transportAccess: e.transportAccess
-  };
-  
-  // Breakdown Calculation
-  let ageScore = 0;
-  if (e.age >= 90) ageScore = 25;
-  else if (e.age >= 85) ageScore = 22;
-  else if (e.age >= 80) ageScore = 18;
-  else if (e.age >= 75) ageScore = 14;
-  else if (e.age >= 70) ageScore = 10;
-  else ageScore = 5;
+      // Render Gauge
+      renderGauge('profile-gauge', e.riskScore);
 
-  let healthScore = 0;
-  if (e.healthCondition === "disability") healthScore = 25;
-  else if (e.healthCondition === "chronic") healthScore = 18;
-  else healthScore = 5;
+      // Calculate breakdown contribution
+      const dataForScore = {
+        age: e.age,
+        healthCondition: e.healthCondition,
+        incomeCategory: e.incomeCategory,
+        familySupport: e.familySupport,
+        accessibilityDistance: e.accessibilityDistance,
+        transportAccess: e.transportAccess
+      };
 
-  let incomeScore = 0;
-  if (e.incomeCategory === "none") incomeScore = 20;
-  else if (e.incomeCategory === "low") incomeScore = 12;
-  else incomeScore = 4;
+      // Breakdown Calculation
+      let ageScore = 0;
+      if (e.age >= 90) ageScore = 25;
+      else if (e.age >= 85) ageScore = 22;
+      else if (e.age >= 80) ageScore = 18;
+      else if (e.age >= 75) ageScore = 14;
+      else if (e.age >= 70) ageScore = 10;
+      else ageScore = 5;
 
-  let familyScore = 0;
-  if (e.familySupport === "alone") familyScore = 20;
-  else if (e.familySupport === "caregiver") familyScore = 10;
-  else familyScore = 3;
+      let healthScore = 0;
+      if (e.healthCondition === "disability") healthScore = 25;
+      else if (e.healthCondition === "chronic") healthScore = 18;
+      else healthScore = 5;
 
-  let accessScore = 2;
-  if (!e.transportAccess && e.accessibilityDistance > 5) accessScore = 10;
-  else if (!e.transportAccess) accessScore = 7;
-  else if (e.accessibilityDistance > 5) accessScore = 5;
-  else accessScore = 2;
+      let incomeScore = 0;
+      if (e.incomeCategory === "none") incomeScore = 20;
+      else if (e.incomeCategory === "low") incomeScore = 12;
+      else incomeScore = 4;
 
-  const breakdownEl = document.getElementById('profile-breakdown');
-  
-  const factors = [
-    { label: `Usia (${e.age} tahun)`, val: ageScore, max: 25, color: ageScore >= 18 ? 'var(--risk-high)' : ageScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
-    { label: `Kesehatan (${e.healthCondition === 'healthy' ? 'Sehat' : e.healthCondition === 'chronic' ? 'Kronis' : 'Disabilitas'})`, val: healthScore, max: 25, color: healthScore >= 18 ? 'var(--risk-high)' : healthScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
-    { label: `Pendapatan (${e.incomeCategory === 'pension' ? 'Pensiunan' : e.incomeCategory === 'low' ? 'Rendah' : 'Tanpa Pendapatan'})`, val: incomeScore, max: 20, color: incomeScore >= 15 ? 'var(--risk-high)' : incomeScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
-    { label: `Keluarga (${e.familySupport === 'family' ? 'Tinggal dg Keluarga' : e.familySupport === 'caregiver' ? 'Dengan Pengasuh' : 'Tinggal Sendiri'})`, val: familyScore, max: 20, color: familyScore >= 15 ? 'var(--risk-high)' : familyScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
-    { label: `Aksesibilitas (${e.accessibilityDistance} km, ${e.transportAccess ? 'ada transport' : 'tanpa transport'})`, val: accessScore, max: 10, color: accessScore >= 7 ? 'var(--risk-high)' : accessScore >= 5 ? 'var(--risk-medium)' : 'var(--risk-low)' }
-  ];
+      let familyScore = 0;
+      if (e.familySupport === "alone") familyScore = 20;
+      else if (e.familySupport === "caregiver") familyScore = 10;
+      else familyScore = 3;
 
-  breakdownEl.innerHTML = factors.map(f => {
-    const pct = Math.round((f.val / f.max) * 100);
-    return `
+      let accessScore = 2;
+      if (!e.transportAccess && e.accessibilityDistance > 5) accessScore = 10;
+      else if (!e.transportAccess) accessScore = 7;
+      else if (e.accessibilityDistance > 5) accessScore = 5;
+      else accessScore = 2;
+
+      const breakdownEl = document.getElementById('profile-breakdown');
+
+      const factors = [
+        { label: `Usia (${e.age} tahun)`, val: ageScore, max: 25, color: ageScore >= 18 ? 'var(--risk-high)' : ageScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
+        { label: `Kesehatan (${e.healthCondition === 'healthy' ? 'Sehat' : e.healthCondition === 'chronic' ? 'Kronis' : 'Disabilitas'})`, val: healthScore, max: 25, color: healthScore >= 18 ? 'var(--risk-high)' : healthScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
+        { label: `Pendapatan (${e.incomeCategory === 'pension' ? 'Pensiunan' : e.incomeCategory === 'low' ? 'Rendah' : 'Tanpa Pendapatan'})`, val: incomeScore, max: 20, color: incomeScore >= 15 ? 'var(--risk-high)' : incomeScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
+        { label: `Keluarga (${e.familySupport === 'family' ? 'Tinggal dg Keluarga' : e.familySupport === 'caregiver' ? 'Dengan Pengasuh' : 'Tinggal Sendiri'})`, val: familyScore, max: 20, color: familyScore >= 15 ? 'var(--risk-high)' : familyScore >= 10 ? 'var(--risk-medium)' : 'var(--risk-low)' },
+        { label: `Aksesibilitas (${e.accessibilityDistance} km, ${e.transportAccess ? 'ada transport' : 'tanpa transport'})`, val: accessScore, max: 10, color: accessScore >= 7 ? 'var(--risk-high)' : accessScore >= 5 ? 'var(--risk-medium)' : 'var(--risk-low)' }
+      ];
+
+      breakdownEl.innerHTML = factors.map(f => {
+        const pct = Math.round((f.val / f.max) * 100);
+        return `
       <div class="score-factor">
         <div class="score-factor__label">${f.label}</div>
         <div class="score-factor__bar"><div class="score-factor__fill" style="width:${pct}%; background:${f.color};"></div></div>
         <div class="score-factor__value">${f.val}/${f.max}</div>
       </div>
     `;
-  }).join('');
+      }).join('');
 
-  // Timeline (Visit History)
-  const eReports = visitReports.filter(r => r.elderlyId === e.id);
-  const visitsBadge = document.getElementById('profile-visits-badge');
-  visitsBadge.textContent = `${eReports.length} Kunjungan`;
-  
-  const timelineEl = document.getElementById('profile-timeline');
-  if (eReports.length === 0) {
-    timelineEl.innerHTML = `
+      // Timeline (Visit History)
+      const eReports = visitReports.filter(r => r.elderlyId === e.id);
+      const visitsBadge = document.getElementById('profile-visits-badge');
+      visitsBadge.textContent = `${eReports.length} Kunjungan`;
+
+      const timelineEl = document.getElementById('profile-timeline');
+      if (eReports.length === 0) {
+        timelineEl.innerHTML = `
       <div style="text-align:center; padding:var(--space-lg); color:var(--text-muted); font-style:italic;">
         Belum ada riwayat kunjungan tercatat untuk lansia ini.
       </div>
     `;
-  } else {
-    // Sort reports by date descending
-    const sortedReports = [...eReports].sort((a, b) => new Date(b.date) - new Date(a.date));
-    timelineEl.innerHTML = sortedReports.map(r => {
-      const vol = getVolunteerById(r.volunteerId);
-      const volName = vol ? vol.name : 'Relawan';
-      let statusColor = 'var(--risk-low)';
-      if (r.overallRating === 'critical') statusColor = 'var(--risk-high)';
-      else if (r.overallRating === 'concerning') statusColor = 'var(--risk-medium)';
-      
-      const ratingLabels = { stable: '🟢 Stabil', concerning: '🟠 Perhatian', critical: '🔴 Kritis' };
-      const ratingLabel = ratingLabels[r.overallRating] || r.overallRating;
+      } else {
+        // Sort reports by date descending
+        const sortedReports = [...eReports].sort((a, b) => new Date(b.date) - new Date(a.date));
+        timelineEl.innerHTML = sortedReports.map(r => {
+          const vol = getVolunteerById(r.volunteerId);
+          const volName = vol ? vol.name : 'Relawan';
+          let statusColor = 'var(--risk-low)';
+          if (r.overallRating === 'critical') statusColor = 'var(--risk-high)';
+          else if (r.overallRating === 'concerning') statusColor = 'var(--risk-medium)';
 
-      return `
+          const ratingLabels = { stable: '🟢 Stabil', concerning: '🟠 Perhatian', critical: '🔴 Kritis' };
+          const ratingLabel = ratingLabels[r.overallRating] || r.overallRating;
+
+          return `
         <div class="timeline__item">
           <div class="timeline__dot" style="background:${statusColor};"></div>
           <div class="timeline__content">
@@ -377,16 +408,16 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       `;
-    }).join('');
-  }
+        }).join('');
+      }
 
-  // Notes
-  const notesContainer = document.getElementById('profile-notes');
-  let healthNotes = e.health;
-  let familyNotes = e.livingStatus || (e.familySupport === 'alone' ? 'Tinggal sendiri' : e.familySupport === 'caregiver' ? 'Dengan pengasuh' : 'Tinggal dengan keluarga');
-  let needsNotes = e.notes || 'Bantuan pemantauan kesehatan rutin dan pendampingan sosial.';
-  
-  notesContainer.innerHTML = `
+      // Notes
+      const notesContainer = document.getElementById('profile-notes');
+      let healthNotes = e.health;
+      let familyNotes = e.livingStatus || (e.familySupport === 'alone' ? 'Tinggal sendiri' : e.familySupport === 'caregiver' ? 'Dengan pengasuh' : 'Tinggal dengan keluarga');
+      let needsNotes = e.notes || 'Bantuan pemantauan kesehatan rutin dan pendampingan sosial.';
+
+      notesContainer.innerHTML = `
     <div style="background:var(--cream); padding:var(--space-md) var(--space-lg); border-radius:var(--radius-md); border-left:4px solid var(--gold);">
       <p style="color:var(--text-primary); line-height:1.7; margin-bottom:var(--space-sm);">
         <strong>Kondisi Fisik & Medis:</strong> ${healthNotes}. Pasien membutuhkan pemantauan terhadap kepatuhan pengobatan dan kontrol rutin.
@@ -400,23 +431,23 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   `;
 
-  // Render other elderly cards
-  const others = elderlyData.filter(item => item.id !== e.id);
-  const listEl = document.getElementById('other-elderly-list');
-  const viewMoreContainer = document.getElementById('view-more-container');
-  let currentDisplayCount = 4;
+      // Render other elderly cards
+      const others = elderlyData.filter(item => item.id !== e.id);
+      const listEl = document.getElementById('other-elderly-list');
+      const viewMoreContainer = document.getElementById('view-more-container');
+      let currentDisplayCount = 4;
 
-  function renderOthers() {
-    if (!listEl) return;
-    const itemsToShow = others.slice(0, currentDisplayCount);
-    
-    listEl.innerHTML = itemsToShow.map(item => {
-      const riskClass = item.riskCategory;
-      const riskLabel = getRiskLabel(item.riskCategory);
-      const riskEmoji = getRiskEmoji(item.riskCategory);
-      const days = daysSince(item.lastVisit);
-      const daysText = days !== null ? days + ' hari lalu' : 'Belum pernah';
-      return `
+      function renderOthers() {
+        if (!listEl) return;
+        const itemsToShow = others.slice(0, currentDisplayCount);
+
+        listEl.innerHTML = itemsToShow.map(item => {
+          const riskClass = item.riskCategory;
+          const riskLabel = getRiskLabel(item.riskCategory);
+          const riskEmoji = getRiskEmoji(item.riskCategory);
+          const days = daysSince(item.lastVisit);
+          const daysText = days !== null ? days + ' hari lalu' : 'Belum pernah';
+          return `
         <div class="elderly-card" style="padding:12px; gap:12px; align-items:center;">
           <div class="elderly-card__avatar" style="font-size:1.8rem; width:48px; height:48px; min-width:48px;">${item.photo}</div>
           <div class="elderly-card__info" style="flex:1; min-width:0;">
@@ -432,24 +463,25 @@ document.addEventListener('DOMContentLoaded', function() {
           </div>
         </div>
       `;
-    }).join('');
+        }).join('');
 
-    if (viewMoreContainer) {
-      if (currentDisplayCount < others.length) {
-        const remaining = others.length - currentDisplayCount;
-        viewMoreContainer.innerHTML = `<button class="btn btn--outline" id="btn-view-more">Lihat Lebih Banyak (${remaining} tersisa) ⬇️</button>`;
-        document.getElementById('btn-view-more').addEventListener('click', () => {
-          currentDisplayCount += 8;
-          renderOthers();
-        });
-      } else {
-        viewMoreContainer.innerHTML = '';
+        if (viewMoreContainer) {
+          if (currentDisplayCount < others.length) {
+            const remaining = others.length - currentDisplayCount;
+            viewMoreContainer.innerHTML = `<button class="btn btn--outline" id="btn-view-more">Lihat Lebih Banyak (${remaining} tersisa) ⬇️</button>`;
+            document.getElementById('btn-view-more').addEventListener('click', () => {
+              currentDisplayCount += 8;
+              renderOthers();
+            });
+          } else {
+            viewMoreContainer.innerHTML = '';
+          }
+        }
       }
-    }
-  }
 
-  renderOthers();
-});
-</script>
+      renderOthers();
+    });
+  </script>
 </body>
+
 </html>
