@@ -3,7 +3,7 @@
    ============================================ */
 
 // ---- Elderly Data ----
-const elderlyData = [
+let elderlyData = [
   {
     id: 1, name: "Ibu Siti Aminah", age: 79, gender: "Perempuan",
     address: "Jl. Kebonsari No. 12, Kel. Jambangan",
@@ -849,4 +849,18 @@ function daysSince(dateStr) {
   if (!dateStr) return null;
   const diff = new Date() - new Date(dateStr);
   return Math.floor(diff / (1000 * 60 * 60 * 24));
+}
+
+// ---- Persistance Setup ----
+const storedElderlyData = localStorage.getItem('sahabatLansia_elderlyData');
+if (storedElderlyData) {
+  try {
+    elderlyData = JSON.parse(storedElderlyData);
+  } catch(e) {
+    console.error("Failed parsing elderlyData from localStorage", e);
+  }
+}
+
+function saveElderlyData() {
+  localStorage.setItem('sahabatLansia_elderlyData', JSON.stringify(elderlyData));
 }

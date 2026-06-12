@@ -58,7 +58,7 @@
     </div>
 
     <!-- ===== PROFILE SECTION (Two Columns) ===== -->
-    <div style="display:grid; grid-template-columns:1fr 1fr; gap:var(--space-xl); margin-bottom:var(--space-xl);" id="profile-container">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:var(--space-xl); margin-bottom:var(--space-xl);" id="profile-container">
 
       <!-- LEFT: Profile Card -->
       <div class="profile-card">
@@ -78,7 +78,7 @@
 
         <div class="gold-divider gold-divider--sm gold-divider--center" style="margin:var(--space-md) var(--space-lg);"></div>
 
-        <div class="profile-card__details" style="padding:0 var(--space-lg) var(--space-md); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-md);">
+        <div class="profile-card__details" style="padding:0 var(--space-lg) var(--space-md); display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:var(--space-md);">
           <div class="profile-card__detail">
             <span style="font-size:0.8rem; color:var(--text-secondary); display:block; margin-bottom:2px;">🏥 Kesehatan</span>
             <strong style="font-size:0.9rem; color:var(--text-primary);" id="detail-health">Diabetes, keterbatasan mobilitas</strong>

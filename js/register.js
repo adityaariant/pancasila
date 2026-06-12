@@ -60,6 +60,36 @@ function initRegisterForm() {
     if (data) {
       const score = calculateRiskScore(data);
       showRegResult(score, data);
+      
+      const newElderly = {
+        id: elderlyData.length > 0 ? Math.max(...elderlyData.map(e => e.id)) + 1 : 1,
+        name: document.getElementById("reg-nama")?.value || "Lansia Baru",
+        age: data.age,
+        gender: document.getElementById("reg-gender")?.value || "Laki-laki",
+        address: document.getElementById("reg-alamat")?.value || "",
+        district: document.getElementById("reg-district")?.value || "",
+        phone: document.getElementById("reg-tel")?.value || "",
+        photo: "👵",
+        health: document.getElementById("reg-health-desc")?.value || data.healthCondition,
+        healthCondition: data.healthCondition,
+        income: 0,
+        incomeCategory: data.incomeCategory,
+        familySupport: data.familySupport,
+        livingStatus: "Data baru",
+        accessibilityDistance: data.accessibilityDistance,
+        transportAccess: data.transportAccess,
+        riskScore: score,
+        riskCategory: getRiskCategory(score),
+        lastVisit: null,
+        volunteer: null,
+        registeredDate: new Date().toISOString().split('T')[0],
+        notes: "Didaftarkan via sistem registrasi."
+      };
+      
+      elderlyData.push(newElderly);
+      if (typeof saveElderlyData === 'function') {
+        saveElderlyData();
+      }
     }
 
     // Show success

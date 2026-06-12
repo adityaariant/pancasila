@@ -69,9 +69,9 @@ function renderVolunteerCards(filter) {
             ${v.photo}
           </div>
           <div style="flex:1; color:white;">
-            <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:2px;">${v.name}</h3>
-            <p style="font-size:0.85rem; opacity:0.9;">📍 ${v.district}</p>
-            <p style="font-size:0.8rem; opacity:0.85; margin-top:2px;">${v.specialization}</p>
+            <h3 style="font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:2px; color:white;">${v.name}</h3>
+            <p style="font-size:0.85rem; opacity:0.9; color:white;">📍 ${v.district}</p>
+            <p style="font-size:0.8rem; opacity:0.85; margin-top:2px; color:white;">${v.specialization}</p>
           </div>
         </div>
         <div class="card__body" style="padding:var(--space-md) var(--space-lg);">
