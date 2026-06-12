@@ -166,6 +166,10 @@
       <!-- Rendered by JS -->
     </div>
 
+    <div id="view-more-container" style="text-align:center; margin-bottom:var(--space-2xl);">
+      <!-- View More Button -->
+    </div>
+
   </main>
 </div>
 
@@ -396,11 +400,17 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
   `;
 
-  // Render other elderly cards (show 4 others, excluding current ID)
-  const others = elderlyData.filter(item => item.id !== e.id).slice(0, 4);
+  // Render other elderly cards
+  const others = elderlyData.filter(item => item.id !== e.id);
   const listEl = document.getElementById('other-elderly-list');
-  if (listEl) {
-    listEl.innerHTML = others.map(item => {
+  const viewMoreContainer = document.getElementById('view-more-container');
+  let currentDisplayCount = 4;
+
+  function renderOthers() {
+    if (!listEl) return;
+    const itemsToShow = others.slice(0, currentDisplayCount);
+    
+    listEl.innerHTML = itemsToShow.map(item => {
       const riskClass = item.riskCategory;
       const riskLabel = getRiskLabel(item.riskCategory);
       const riskEmoji = getRiskEmoji(item.riskCategory);
@@ -427,7 +437,22 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
       `;
     }).join('');
+
+    if (viewMoreContainer) {
+      if (currentDisplayCount < others.length) {
+        const remaining = others.length - currentDisplayCount;
+        viewMoreContainer.innerHTML = `<button class="btn btn--outline" id="btn-view-more">Lihat Lebih Banyak (${remaining} tersisa) ⬇️</button>`;
+        document.getElementById('btn-view-more').addEventListener('click', () => {
+          currentDisplayCount += 8;
+          renderOthers();
+        });
+      } else {
+        viewMoreContainer.innerHTML = '';
+      }
+    }
   }
+
+  renderOthers();
 });
 </script>
 </body>
