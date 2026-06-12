@@ -61,12 +61,12 @@
     <div style="display:grid; grid-template-columns:repeat(auto-fit, minmax(min(100%, 400px), 1fr)); gap:var(--space-xl); margin-bottom:var(--space-xl);" id="profile-container">
 
       <!-- LEFT: Profile Card -->
-      <div class="profile-card">
+      <div class="profile-card" style="align-self: start;">
         <div class="profile-card__banner" style="background:linear-gradient(135deg, #6A0D0D 0%, #8B1E1E 50%, #D4A373 100%); height:120px; border-radius:var(--radius-lg) var(--radius-lg) 0 0; position:relative;"></div>
-        <div class="profile-card__photo" id="profile-photo" style="font-size:4rem; width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:var(--cream); border-radius:50%; border:4px solid white; margin:-50px auto 0; position:relative; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
+        <div class="profile-card__photo" id="profile-photo" style="font-size:4rem; width:100px; height:100px; display:flex; align-items:center; justify-content:center; background:var(--cream); border-radius:50%; border:4px solid white; margin:-50px auto 12px; position:relative; z-index:2; box-shadow:0 4px 12px rgba(0,0,0,0.1);">
           👵
         </div>
-        <div class="profile-card__info" style="text-align:center; padding:var(--space-md) var(--space-lg);">
+        <div class="profile-card__info" style="text-align:center; padding:0 var(--space-lg) var(--space-md);">
           <h2 class="profile-card__name" id="profile-name" style="font-family:'Playfair Display',serif; color:var(--primary); margin-bottom:var(--space-xs);">Ibu Siti Aminah</h2>
           <p class="profile-card__meta" id="profile-meta" style="color:var(--text-secondary); margin-bottom:var(--space-sm);">79 tahun • Perempuan • Jambangan</p>
           <div id="profile-risk-badge-container">
@@ -162,7 +162,7 @@
       <p class="section__subtitle">Profil lansia lain yang terdaftar dalam sistem</p>
     </div>
 
-    <div class="elderly-list" id="other-elderly-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); gap:var(--space-lg); margin-bottom:var(--space-xl);">
+    <div class="elderly-list" id="other-elderly-list" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(320px, 1fr)); gap:12px; margin-bottom:var(--space-xl);">
       <!-- Rendered by JS -->
     </div>
 
@@ -417,22 +417,18 @@ document.addEventListener('DOMContentLoaded', function() {
       const days = daysSince(item.lastVisit);
       const daysText = days !== null ? days + ' hari lalu' : 'Belum pernah';
       return `
-        <div class="elderly-card">
-          <div class="elderly-card__avatar" style="font-size:2.5rem;">${item.photo}</div>
-          <div class="elderly-card__info">
-            <h4 class="elderly-card__name">${item.name}</h4>
-            <p class="elderly-card__meta">${item.age} tahun • ${item.gender} • ${item.district}</p>
-            <div class="elderly-card__details" style="margin-top:var(--space-xs);">
-              <span class="risk-badge risk-badge--${riskClass}">
-                <span class="risk-badge__dot"></span> ${riskEmoji} ${riskLabel}
-              </span>
-              <span style="font-size:0.8rem; color:var(--text-secondary); margin-left:var(--space-sm);">Skor: ${item.riskScore}</span>
-            </div>
-            <p style="font-size:0.8rem; color:var(--text-secondary); margin-top:var(--space-xs);">🏥 ${item.health}</p>
-            <p style="font-size:0.8rem; color:var(--text-secondary);">📅 Kunjungan terakhir: ${daysText}</p>
+        <div class="elderly-card" style="padding:12px; gap:12px; align-items:center;">
+          <div class="elderly-card__avatar" style="font-size:1.8rem; width:48px; height:48px; min-width:48px;">${item.photo}</div>
+          <div class="elderly-card__info" style="flex:1; min-width:0;">
+            <h4 class="elderly-card__name" style="font-size:0.95rem; margin-bottom:2px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">${item.name}</h4>
+            <p class="elderly-card__meta" style="font-size:0.75rem; margin-bottom:4px;">${item.age} thn • ${item.district}</p>
+            <p style="font-size:0.75rem; color:var(--text-secondary); margin:0; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;">🏥 ${item.health}</p>
           </div>
-          <div class="elderly-card__actions" style="margin-top:var(--space-sm);">
-            <a href="profile.html?id=${item.id}" class="btn btn--outline btn--sm">👁️ Lihat Profil</a>
+          <div style="text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:6px;">
+            <span class="risk-badge risk-badge--${riskClass}" style="padding:3px 8px; font-size:0.7rem;">
+              <span class="risk-badge__dot"></span> ${riskLabel}
+            </span>
+            <a href="profile.html?id=${item.id}" class="btn btn--outline btn--sm" style="padding:4px 12px; font-size:0.7rem;">Lihat</a>
           </div>
         </div>
       `;
